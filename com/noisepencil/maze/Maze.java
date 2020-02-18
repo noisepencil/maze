@@ -16,39 +16,22 @@ public class Maze {
         for (int row = 0; row < numRows; row++){
             for (int col = 0; col < numCols; col++){
                 
-                Tile tile = new Tile(0, 0, (mazeData[row][col] == 0));
+                Tile tile = new Tile(row, col, (mazeData[row][col] == 0));
                 if (row == startRow && col == startCol) {
                     tile.isStart = true;
                 } else if (row == endRow && col == endCol) {
                     tile.isEnd = true;
                 }
-                tiles[row][col] = tile;
-                
+                tiles[row][col] = tile;  
+                // 
             }
         }
     }
     public void print() {
    
         char block = (char) 0x2588;
-        
-        // top border (how to leave hole for start/end?)
-        System.out.print(block); // corner
-        for (int c =0; c < numCols;c++){
-            if (tiles[numRows-1][c].isEnd || tiles[numRows-1][c].isStart) {
-                System.out.print((char) 0x00A0);
-            } else {
-                System.out.print(block);
-            }
-        }
-        System.out.println(block); // bottom right corner
-     
-        for (int row = numRows-1; row >= 0; row--){
-            // left border (unless leaving hole for start/end) (check first tile in this row)
-            if (tiles[row][0].isStart || tiles[row][0].isEnd) {
-                System.out.print((char) 0x00A0);
-            } else {
-                System.out.print(block);
-            }
+             
+        for (int row = 0; row < numRows; row++){
          
             for (int col = 0; col < numCols; col++){
             
@@ -57,27 +40,9 @@ public class Maze {
                 } else{
                     System.out.print(" ");
                 }
-            }
+            }           
+            System.out.println();
 
-            // right border unless leaving hole for start/end (check last tile in this row)
-            if (tiles[row][numCols-1].isStart || tiles[row][numCols-1].isEnd) {
-                System.out.println((char) 0x00A0);
-            } else {
-                System.out.println(block);
-            }
-           
         }
-
-        // bottom border (how to leave hole for start/end?)
-        System.out.print(block); // top left corner
-        for (int c =0; c < numCols;c++){
-            if (tiles[0][c].isEnd || tiles[0][c].isStart) {
-                System.out.print((char) 0x00A0);
-            } else {
-                System.out.print(block);
-            }
-        }
-        System.out.println(block); // top right corner
-
     }
 }
