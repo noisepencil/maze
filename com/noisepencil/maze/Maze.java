@@ -22,8 +22,8 @@ public class Maze {
                 } else if (row == endRow && col == endCol) {
                     tile.isEnd = true;
                 }
-                tiles[row][col] = tile;
-                
+                tiles[row][col] = tile;  
+                // 
             }
         }
     }
