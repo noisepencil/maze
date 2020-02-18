@@ -25,6 +25,9 @@ public class mazeRunner {
         // print maze data
         maze.print();
 
+        // walk the maze
+        maze.walkMaze();
+
         // adios
         System.out.println("Bye!");
 
